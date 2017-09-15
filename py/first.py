@@ -1,73 +1,94 @@
-# Definition for singly-linked list.
-from Queue import PriorityQueue
+class TrieNode:
+    def __init__(self):
+        self.count = 0
+        self.children = {}
 
-class ListNode(object):
-    def __init__(self, x):
-        self.val = x
-        self.next = None
+
+class Trie:
+
+    def __init__(self):
+        """
+        Initialize your data structure here.
+        """
+        self.root = TrieNode()
+
+    def insert(self, word):
+        """
+        Inserts a word into the trie.
+        :type word: str
+        :rtype: void
+        """
+        node = self.root
+        for i in word:
+            if i not in node.children:
+                node.children[i] = TrieNode()
+            node = node.children[i]
+        node.count = 1
+
+    def search(self, word):
+        """
+        Returns if the word is in the trie.
+        :type word: str
+        :rtype: bool
+        """
+        node = self.root
+        for i in word:
+            if i not in node.children:
+                return False
+            node = node.children[i]
+        if node.count:
+            return True
+        return False
+
+    def startsWith(self, prefix):
+        """
+        Returns if there is any word in the trie that starts with the given prefix.
+        :type prefix: str
+        :rtype: bool
+        """
+        node = self.root
+        for i in prefix:
+            if i not in node.children:
+                return False
+            node = node.children[i]
+        return True
+
 
 class Solution(object):
-    def mergeTwoLists(self, l1, l2):
+    def findWords(self, board, words):
         """
-        :type l1: ListNode
-        :type l2: ListNode
-        :rtype: ListNode
+        :type board: List[List[str]]
+        :type word: str
+        :rtype: bool
         """
-        if l1 is None:
-            return l2
-        if l2 is None:
-            return l1
-        cur = ListNode(None)
-        newHead = cur
-        while l1 is not None or l2 is not None:
-            if l1.val <= l2.val:
-                cur.next = l1
-                l1 = l1.next
-            else:
-                cur.next = l2
-                l2 = l2.next
-            cur = cur.next
-            if l1 is None:
-                cur.next = l2
-                break
-            if l2 is None:
-                cur.next = l1
-                break
-        return newHead.next
+        def find(board, i, j, ret, trie, pre, visited):
+            if i < 0 or i >= len(board) or j < 0 or j >= len(board[i]):
+                return
+            if (i, j) in visited:
+                return
 
-    def mergeKListsTwo(self, lists):
-        """
-        :type lists: List[ListNode]
-        :rtype: ListNode
-        """
-        if lists is None:
-            return None
-        if len(lists) == 0:
-            return []
-        while len(lists) > 1:
-            lists.append(self.mergeTwoLists(lists[0], lists[1]))
-            lists = lists[1:]
-            lists = lists[1:]
-        return lists[0]
+            pre += board[i][j]
+            if not trie.startsWith(pre):
+                return
+            if trie.search(pre):
+                ret.add(pre)
 
-    def mergeKLists(self, lists):
-        """
-        :type lists: List[ListNode]
-        :rtype: ListNode
-        """
-        if lists is None:
-            return None
-        if len(lists) == 0:
+            visited[(i, j)] = 1
+            find(board, i + 1, j, ret, trie, pre, visited)
+            find(board, i - 1, j, ret, trie, pre, visited)
+            find(board, i, j + 1, ret, trie, pre, visited)
+            find(board, i, j - 1, ret, trie, pre, visited)
+            del visited[(i, j)]
+
+        if not board or not words:
             return []
-        cur = ListNode()
-        newHead = cur
-        q = PriorityQueue()
-        for node in lists:
-            if node:
-                q.put((node.val, node))
-        while q.qsize() > 0:
-            cur.next = q.get()[1]
-            cur = cur.next
-            if cur.next:
-                q.put((cur.next.val, cur.next))
-        return newHead.next
+        trie = Trie()
+        for word in words:
+            trie.insert(word)
+        ret = set()
+        visited = {}
+        for i in range(len(board)):
+            for j in range(len(board[i])):
+                find(board, i, j, ret, trie, '', visited)
+
+        return list(ret)
