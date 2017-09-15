@@ -25,4 +25,29 @@ leetcode problems realized by python
 * https://leetcode.com/problems/merge-two-sorted-lists #完成
 * https://leetcode.com/problems/merge-k-sorted-lists #完成
 * https://leetcode.com/problems/sliding-window-median
-* https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree
+* https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree #完成
+* https://leetcode.com/problems/number-of-islands #完成
+* https://leetcode.com/problems/word-search/ #完成
+* https://leetcode.com/problems/word-search-ii/ #未完成
+* https://leetcode.com/problems/binary-tree-level-order-traversal/description/
+* https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal
+* https://leetcode.com/problems/minimum-genetic-mutation/description/
+* https://leetcode.com/problems/generate-parentheses/#/description
+* https://leetcode.com/problems/find-largest-value-in-each-tree-row/#/description
+* https://leetcode.com/problems/course-schedule/#/description
+* https://leetcode.com/problems/course-schedule-ii/#/description
+* https://leetcode.com/problems/n-queens/
+* https://leetcode.com/problems/sudoku-solver/#/description
+* https://leetcode.com/problems/01-matrix/#/description
+* https://leetcode.com/problems/binary-tree-maximum-path-sum/#/description
+* https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal
+* https://leetcode.com/problems/word-search-ii/#/description
+* https://leetcode.com/problems/path-sum/description/
+* https://leetcode.com/problems/linked-list-cycle-ii/description/
+* https://leetcode.com/problems/generate-parentheses/#/description
+* https://leetcode.com/problems/valid-sudoku/
+* https://leetcode.com/problems/find-largest-value-in-each-tree-row/#/description
+* https://leetcode.com/problems/n-queens/
+* https://leetcode.com/problems/01-matrix/#/description
+* https://leetcode.com/problems/binary-tree-maximum-path-sum/#/description
+* https://leetcode.com/problems/path-sum-ii 
