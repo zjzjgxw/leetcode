@@ -35,7 +35,7 @@ class Solution(object):
                 break
         return newHead.next
 
-    def mergeKListsTwo(self, lists):
+    def mergeKListsSecond(self, lists):
         """
         :type lists: List[ListNode]
         :rtype: ListNode

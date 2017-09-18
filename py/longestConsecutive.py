@@ -22,12 +22,5 @@ class Solution(object):
                 buff_dict[i-left] = longest
                 buff_dict[i+right] = longest
                 res = max(res, longest)
-        print(buff_dict)
         return res
-
-sol = Solution()
-nums = [[1,2,3],[4,5,6],[7,8,9]]
-new = [1,2,3,4,5,6,7,8,9]
-print(new[::-1])
-print(nums[::-1])
 
