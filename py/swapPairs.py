@@ -14,22 +14,13 @@ class Solution(object):
         if head is None or head.next is None:
             return head
         newHead = head.next
-        p1, p2 = head, head.next
         pre = ListNode(None)
-        pre.next = p1
-        i = 1
-        while p1.next is not None and p2 is not None:
-            if i % 2 == 1:
-                tmp = p1
-                p1.next = p2.next
-                p2.next = tmp
-                pre.next = p2
-                p2 = p1.next
-            else:
-                pre = p1
-                p1 = p1.next
-                p2 = p2.next
-            i += 1
+        pre.next = head
+        while pre.next and pre.next.next:
+            a = pre.next
+            b = a.next
+            pre.next, b.next, a.next = b, a, b.next
+            pre = a
         return newHead
 sol = Solution()
 L1 = ListNode(1)
